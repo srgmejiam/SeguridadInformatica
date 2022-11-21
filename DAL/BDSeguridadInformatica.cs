@@ -13,8 +13,7 @@ namespace DAL
 {
     public class BDSeguridadInformatica : DbContext
     {
-        public BDSeguridadInformatica()
-       : base(Conexion.ConexionString())
+        public BDSeguridadInformatica():base(Conexion.ConexionString())
         {
         }
 
