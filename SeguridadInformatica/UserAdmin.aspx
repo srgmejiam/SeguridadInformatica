@@ -70,43 +70,14 @@
                                     <asp:LinkButton runat="server" ID="lnkDesbloquear" CssClass="form-control btn btn-primary" ForeColor="White" OnClientClick="confirmDesbloquear('','Seguro desea desbloquear el usuario.','lnkDesbloquear',true);return false;" OnClick="lnkDesbloquear_Click">Desbloquear</asp:LinkButton>
                                 </asp:Panel>
                             </div>
+                            <div class="row"></div>
 
                             <div class="row">
 
                                 <%-- Encabezado Grid --%>
-                                <div class="row" style="margin-bottom: 10px">
-                                    <div class="col-md-12 row">
-                                        <div class="col-md-4">
-                                            <label>Búsqueda</label>
-                                            <div class="input-group custom-search-form">
-                                                <asp:TextBox runat="server" CssClass="form-control" ID="txtBusqueda" MaxLength="50" AutoPostBack="true" OnTextChanged="txtBusqueda_TextChanged"></asp:TextBox>
-                                                <span class=" xBusqueda" style="margin-left: -30px;">
-                                                    <asp:LinkButton runat="server" ID="lnkReset" CssClass="btn" ForeColor="GrayText" OnClick="lnkReset_Click"><i class="fa fa-times "></i>
-                                                    </asp:LinkButton>
-                                                </span>
-                                                <span class="input-group-btn" style="margin-left: -2px">
-
-                                                    <asp:LinkButton runat="server" ID="lnkBusqueda" CssClass="btn" BackColor="#2B6F97" ForeColor="White" OnClick="lnkBusqueda_Click"><i class="fa fa-search"></i>
-                                                    </asp:LinkButton>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-7"></div>
-                                        <div class="col-md-1">
-                                            <label>Registros</label>
-                                            <asp:DropDownList runat="server" ID="ddlPageSize" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlPagerSize_SelectedIndexChanged1">
-                                                <asp:ListItem>5</asp:ListItem>
-                                                <asp:ListItem>10</asp:ListItem>
-                                                <asp:ListItem>20</asp:ListItem>
-                                                <asp:ListItem>50</asp:ListItem>
-                                                <asp:ListItem>Todos</asp:ListItem>
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
-                                </div>
-
+                              
                                 <%-- Grid --%>
-                                <div class="row" id="DivGrid" style="width: 100%">
+                                <div class="row" id="DivGrid" style="width: 100%;margin-top:20px">
                                     <div class="col-md-12" style="overflow-y: scroll; overflow-x: scroll; max-height: 500px;">
                                         <asp:HiddenField runat="server" ID="HF_IdUsuario" Value="0" />
                                         <asp:HiddenField runat="server" ID="HF_CodigoMunicipio" Value="0" />

@@ -25,8 +25,8 @@ namespace SeguridadInformatica
                         cargarGridUsuarios();
                         cargarDDL_Rol();
                         cargarddlBaja();
+                    }
                 }
-            }
             }
             catch (Exception ex)
             {
@@ -252,27 +252,15 @@ namespace SeguridadInformatica
         }
         public void administrarBotones(bool Nuevo = false, bool Guardar = false, bool Anular = false, bool Desbloquear = false)
         {
-            //int IdRol = 0;
             try
             {
-                //IdRol = (int)(Session["IdRolSesion"]);
-                //if (IdRol == (int)eRol.Administrador)
-                {
-                    //lnkNuevo.Visible = Nuevo;
-                    //lnkGuardar.Visible = Guardar;
-                    //lnkAnular.Visible = Anular;
-                    //lnkDesbloquear.Visible = Desbloquear;
-
-                    panelBtnGuardar.Visible = true;
-                    panelBtnAnular.Visible = (ValidarPermiso((int)ePermisos.Anular, (int)eFormularios.Usuarios)) ? Anular : false;
-                    //panelBtnDesbloquear.Visible = (ValidarPermiso((int)ePermisos.Desbloquear, (int)eFormularios.AdmonUsuarios)) ? Desbloquear : false;
-                }
+                panelBtnGuardar.Visible = true;
+                panelBtnAnular.Visible = (ValidarPermiso((int)ePermisos.Anular, (int)eFormularios.Usuarios)) ? Anular : false;
+                panelBtnDesbloquear.Visible = (ValidarPermiso((int)ePermisos.Escribir, (int)eFormularios.Usuarios)) ? Desbloquear : false;
             }
             catch (Exception)
             {
-                //IniciarSesionNuevamente();
             }
-
         }
         protected void limpiarControles()
         {
@@ -283,7 +271,6 @@ namespace SeguridadInformatica
                 txtContraseña.Text = "";
                 txtEmail.Text = "";
                 txtCargo.Text = "";
-                txtBusqueda.Text = "";
                 ddlBaja.SelectedValue = "1";
 
                 cargarDDL_Rol();
@@ -475,26 +462,7 @@ namespace SeguridadInformatica
                     Mensaje("Por favor seleccionar el Rol del usuario.", (int)eMessage.Alerta);
                     return false;
                 }
-                //if (ddlAreaEjecutora.SelectedIndex == 0 && ddlAreaEjecutora.Enabled == true)
-                //{
 
-                //    Mensaje("Por favor seleccionar el Area Ejecutora del usuario.", (int)eMessage.Alerta);
-                //    return false;
-                //}
-
-                //if ((int)(ddlDepartamento.SelectedValue) == 0)
-                //{
-
-                //    Mensaje("Por favor seleccionar el departamento.", (int)eMessage.Alerta);
-                //    return false;
-                //}
-
-                //if ((int)(ddlMunicipio.SelectedValue) == 0)
-                //{
-
-                //    Mensaje("Por favor seleccionar el municipio.", (int)eMessage.Alerta);
-                //    return false;
-                //}
                 if (string.IsNullOrEmpty(txtCargo.Text) || string.IsNullOrWhiteSpace(txtCargo.Text))
                 {
                     Mensaje("Por favor ingresar el cargo.", (int)eMessage.Alerta);
@@ -700,27 +668,7 @@ namespace SeguridadInformatica
 
             }
         }
-        protected void txtBusqueda_TextChanged(object sender, EventArgs e)
-        {
-            string[] Columnas = { "Nombre", "Login", "Email", "AreaEjecutora", "Rol", "Departamento", "Municipio", "Cargo", "Intentos", "Bloqueado" };
-            Filtrar(gridUsuarios, txtBusqueda.Text, BL_Usuario.VistaUsuarios(), Columnas);
-        }
-        protected void lnkBusqueda_Click(object sender, EventArgs e)
-        {
-            string[] Columnas = { "Nombre", "Login", "Email", "AreaEjecutora", "Rol", "Departamento", "Municipio", "Cargo", "Intentos", "Bloqueado" };
-            Filtrar(gridUsuarios, txtBusqueda.Text, BL_Usuario.VistaUsuarios(), Columnas);
-        }
-        protected void lnkReset_Click(object sender, EventArgs e)
-        {
-            txtBusqueda.Text = "";
-            limpiarControles();
-            cargarGridUsuarios();
-        }
-        protected void ddlPagerSize_SelectedIndexChanged1(object sender, EventArgs e)
-        {
-            cambiarPaginado(gridUsuarios, Convert.ToInt32(ddlPageSize.SelectedValue));
-            cargarGridUsuarios();
-        }
+
         protected void lnkVolver_Click(object sender, EventArgs e)
         {
             {
@@ -732,15 +680,12 @@ namespace SeguridadInformatica
             limpiarControles();
             administrarBotones(true, true, false, false);
             cargarGridUsuarios();
-            //ddlAreaEjecutora.Enabled = true;
-
-
         }
         protected void lnkGuardar_Click(object sender, EventArgs e)
         {
             try
             {
-                int IdUsuarioSession = (int)(Session["IdUsuarioSesion"]); /*= (int)(HF_IdUsuario.Value);*/
+                int IdUsuarioSession = (int)(Session["IdUsuarioSesion"]);
                 int IdUsuario = Convert.ToInt32(HF_IdUsuario.Value);
                 if (validarControles(IdUsuario))
                 {
@@ -822,15 +767,7 @@ namespace SeguridadInformatica
         protected void gridUsuarios_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             gridUsuarios.PageIndex = e.NewPageIndex;
-            if (txtBusqueda.Text == string.Empty)
-            {
-                cargarGridUsuarios();
-            }
-            else
-            {
-                string[] Columnas = { "Nombre", "Login", "Email", "AreaEjecutora", "Cargo", "Municipio", "Departamento", "Rol", "Intentos", "Bloqueado" };
-                Filtrar(gridUsuarios, txtBusqueda.Text, BL_Usuario.VistaUsuarios(), Columnas);
-            }
+            cargarGridUsuarios();
             limpiarControles();
         }
         protected void ddlDepartamento_SelectedIndexChanged(object sender, EventArgs e)
@@ -854,29 +791,9 @@ namespace SeguridadInformatica
                     int index = gvr.RowIndex;
 
                     HF_IdUsuario.Value = gridUsuarios.DataKeys[index]["IdUsuario"].ToString();
-                    //HF_Nombre.Value = gridUsuarios.DataKeys[index]["Nombre"].ToString();
-                    //HF_Login.Value = gridUsuarios.DataKeys[index]["Login"].ToString();
-                    //HF_Email.Value = gridUsuarios.DataKeys[index]["Email"].ToString();
-                    //HF_IdAreaEjecutora.Value = gridUsuarios.DataKeys[index]["IdAreaEjecutora"].ToString();
-                    //HF_Cargo.Value = gridUsuarios.DataKeys[index]["Cargo"].ToString();
-                    //HF_CodigoMunicipio.Value = gridUsuarios.DataKeys[index]["CodigoMunicipio"].ToString();
-                    //HF_IdRol.Value = gridUsuarios.DataKeys[index]["IdRol"].ToString();
                     HF_Bloqueado.Value = gridUsuarios.DataKeys[index]["Bloqueado"].ToString();
-                    //Baja = Convert.ToBoolean(gridUsuarios.DataKeys[index]["Baja"]);
-
-                    //if (Baja == true)
-                    //{
-                    //    ddlBaja.SelectedValue = "1";
-                    //}
-                    //else
-                    //{
-                    //    ddlBaja.SelectedValue = "2";
-                    //}
-
                     TraerDatos();
-
                     bool Desbloquear = Convert.ToBoolean(HF_Bloqueado.Value);
-
                     administrarBotones(true, true, true, Desbloquear);
                 }
                 else
@@ -981,50 +898,11 @@ namespace SeguridadInformatica
         }
 
 
-
         #endregion
 
         protected void ddlRol_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int idrol = 0;
-            try
-            {
-                idrol = Convert.ToInt32(ddlRol.SelectedValue.ToString());
-
-                HF_IdAreaEjecutora.Value = "";
-
-                if (idrol == 1)
-                {
-                    //lblcod.Visible = false;
-                    //lblcodi.Visible = false;
-                    //ddlAreaEjecutora.Text = string.Empty;
-                    //ddlAreaEjecutora.Enabled = false;
-                    //panelCodigoUnico.Visible = false;
-                    //txtCodigoCentro.Visible = false;
-                    //lnkCodigoUnico.Visible = false;
-                    //ddlAreaEjecutora.CssClass = "form-control";
-                    //ddlAreaEjecutora.CssClass = "form-select";
-
-                }
-
-                else
-                {
-                    //lblcod.Visible = false;
-                    //lblcodi.Visible = false;
-
-                    // ddlAreaEjecutora.Enabled = true;
-                    //panelCodigoUnico.Visible = false;
-                    //txtCodigoCentro.Visible = false;
-                    //lnkCodigoUnico.Visible = false;
-                    //ddlAreaEjecutora.CssClass = "form-control";
-                    //ddlAreaEjecutora.CssClass = "form-select";
-                }
-
-            }
-            catch (Exception ex)
-            {
-
-            }
+           
         }
 
         protected void ddlBaja_SelectedIndexChanged(object sender, EventArgs e)
