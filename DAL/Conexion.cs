@@ -10,7 +10,7 @@ namespace DAL
     {
         public static string ConexionString()
         {
-            return "Conexion";
+            return "Data Source=SRG\\SQL2019;Initial Catalog=BDSeguridadInformatica;Integrated Security=True";
         }
     }
 }

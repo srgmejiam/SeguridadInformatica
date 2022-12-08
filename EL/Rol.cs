@@ -10,12 +10,8 @@ namespace EL
         [Key]
         public int IdRol { get; set; }
         [Required]
-        public string Descripcion { get; set; }
+        public string NombreRol { get; set; }
         [Required]
-        public int IdUsuarioRegistro { get; set; }
-        public DateTime FechaRegistro { get; set; }
-        public int? IdUsuarioActualiza { get; set; }
-        public DateTime? FechaActualizacion { get; set; }
         public bool Activo { get; set; }
     }
 }

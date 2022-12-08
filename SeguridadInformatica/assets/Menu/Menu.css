@@ -1,0 +1,192 @@
+﻿
+/*body {
+      margin-left: 80px;
+    transition: margin-left 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}*/
+
+/*Menu SideBar*/
+/*Título del SideBar*/
+.icon__menu {
+    width: 50px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+   /* transform: translateX(10px);*/
+}
+
+    .icon__menu i {
+        font-size: 20px;
+        cursor: pointer;
+        position: absolute;
+    }
+/*Fondo y Configuración del SideBar*/
+.menu__side {
+    width: 80px;
+    height: 100%;
+    background: #1783db; /*Color de fondo del SideBar*/
+    position: fixed;
+    float:left;
+    top: 0;
+    left: 0;
+    color: white; /*Color del Título del SideBar*/
+    font-size: 18px;
+    z-index: 3000;
+    overflow: hidden;
+    overflow-y: scroll;
+    border-right: 20px solid #1783db; /*Borde lateral derecho del SideBar*/
+    transition: all 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    text-decoration:none !important;
+}
+
+    /*Ocultar scroll para chrome, safari y opera*/
+    .menu__side::-webkit-scrollbar {
+        display: none;
+    }
+
+    /*Ocultar scroll para IE, Edge y Firefox*/
+    .menu__side {
+        -ms-overflow-style: none;
+    }
+
+/*Nombre de la pagina en el SideBar*/
+.name__page {
+    padding: 20px 30px;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+    .name__page i {
+        width: 20px;
+        margin-right: 20px;
+    }
+
+/*Items SideBar*/
+.options__menu {
+    padding: 20px 30px;
+    position: absolute;
+    top: 80px;
+    font-size:18px;
+}
+
+    .options__menu a {
+        color: white;
+        display: block;
+        position: relative;
+        transition: color 300ms;
+        text-decoration:none;
+        cursor:pointer;
+    }
+
+        .options__menu a:hover {
+            color: darkgray;
+            transform:scale(1.05);
+
+        }
+
+        .options__menu .option {
+            padding: 10px 0px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .options__menu .option i {
+            width: 20px;
+            margin-right: 20px;
+            cursor: pointer;
+        }
+
+        .options__menu .option h4 {
+            font-weight: 300;
+            cursor: pointer;
+        }
+
+a .selected {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.selected:before {
+    content: '';
+    width: 3px;
+    height: 80%;
+    background: white;
+    position: absolute;
+    top: 10%;
+    left: -30px;
+}
+
+/*Clases para usar en JavaScript*/
+.body_move {
+    margin-left: 250px;
+}
+
+.menu__side_move {
+    width: 250px;
+}
+
+/*Datos del Usuario*/
+.dataUser {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
+    .dataUser :hover {
+        transform: scale(1.05);
+    }
+
+.center {
+    text-align: center;
+}
+
+/*Items CardMenu*/
+.CardMenuPrincipal {
+   /* margin-top: 15px;*/
+    text-decoration: none;
+    margin-bottom: 10px;
+    /*border: 1px solid black*/
+}
+    .CardMenuPrincipal:hover {
+        transform: scale(1.02);
+        box-shadow: rgb(128 128 128),10px 20px;    
+    }
+
+.icono {
+   font-size:50px;
+   padding:5px;
+}
+
+/*Pie de Página*/
+footer {
+    background-color: black;
+    position: fixed;
+    float: inline-end;
+    flex-direction: column;
+    bottom: 0;
+    width: 100%;
+}
+
+/*Contenedor de los formaularios*/
+#contenedorAPP{
+    margin-top:10px;
+    /*margin-bottom:50px;
+    width:98%;*/
+}
+
+/*Codicionales segun tamaño de pantalla*/
+@media screen and (max-width: 760px) {
+    .body_move {
+        margin-left: 0px;
+    }
+
+    .menu__side_move {
+        width: 80px;
+        left: -80px;
+    }
+}
+

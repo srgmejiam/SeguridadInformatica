@@ -1,0 +1,88 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Menu.master.cs" Inherits="SeguridadInformatica.Menu" %>
+
+<!DOCTYPE html>
+
+<html>
+
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>Seguridad Informática | Principal</title>
+        <link rel="shortcut icon" href="assets/Images/1995704.ico" type="image/x-icon" />
+    <%-- CSS --%>
+    <link href="assets/bootstrap-5.2.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/CSS/Interruptor.css" rel="stylesheet" />
+    <link href="assets/CSS/Pagination.css" rel="stylesheet" />
+    <link href="assets/Fontawesome/css/all.min.css" rel="stylesheet" />
+    <link href="assets/Menu/Menu.css" rel="stylesheet" />
+    <link href="assets/Select/css/select2.min.css" rel="stylesheet" />
+    <link href="assets/SweeAlert/sweetalert.min.css" rel="stylesheet" />
+
+    <%-- JavaScrip --%>
+    <script src="assets/JQuery/jquery.min.js"></script>
+    <script src="assets/bootstrap-5.2.0/js/bootstrap.min.js"></script>
+    <script src="assets/bootstrap-5.2.0/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/Fontawesome/js/all.min.js"></script>
+    <script src="assets/JavaScript/Validaciones.js"></script>
+    <script src="assets/Select/js/select2.full.min.js"></script>
+    <script src="assets/SweeAlert/sweetalert.all.min.js"></script>
+    <script src="assets/SweeAlert/sweetAlertStyle.js"></script>
+</head>
+
+<body>
+    <form id="form1" runat="server">
+        <nav class="nav navbar-dark navbar-expand-lg bg-dark">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div id="navbarMenu" class="collapse navbar-collapse">
+
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="color: white; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
+                        <li class="nav-item">
+                            <asp:LinkButton runat="server" ID="lnkInicio" class="nav-link active" aria-current="page" OnClick="lnkInicio_Click">Inicio</asp:LinkButton>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <asp:LinkButton class="nav-link dropdown-toggle active" href="#" runat="server"  ID="lnkFormularios" role="button" data-bs-toggle="dropdown" aria-expanded="false">Formularios</asp:LinkButton>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <asp:LinkButton runat="server" ID="Formulario_1" class="dropdown-item">Formulario 1</asp:LinkButton></li>
+                                <li>
+                                    <asp:LinkButton runat="server" ID="Formulario_2" class="dropdown-item">Formulario 2</asp:LinkButton></li>
+                                <li>
+                                    <asp:LinkButton runat="server" ID="Formulario_3" class="dropdown-item">Formulario 3</asp:LinkButton></li>
+                                <li>
+                                    <asp:LinkButton runat="server" ID="lnkAdministrarUsuarios" class="dropdown-item" OnClick="lnkAdministrarUsuarios_Click">Usuarios</asp:LinkButton></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <asp:LinkButton runat ="server" class="nav-link dropdown-toggle active" href="#" ID="lnkCatalogos" role="button" data-bs-toggle="dropdown" aria-expanded="false">Catálogos</asp:LinkButton>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                                <li><asp:LinkButton runat="server" ID="lnkCatalogo_1" class="dropdown-item">Catálogo 1</asp:LinkButton></li>
+                                <li><asp:LinkButton runat="server" ID="lnkCatalogo_2" class="dropdown-item">Catálogo 2</asp:LinkButton></li>
+                                <li><asp:LinkButton runat="server" ID="lnkCatalogo_3" class="dropdown-item">Catálogo 3</asp:LinkButton></li>
+                            </ul>
+                        </li>
+                         <li class="nav-item">
+                            <asp:LinkButton runat="server" ID="lnkCambiarPassword" class="nav-link active" aria-current="page" OnClick="lnkCambiarPassword_Click">Cambiar Contraseña</asp:LinkButton>
+                        </li>
+                        <li class="nav-item">
+                            <asp:LinkButton runat="server" ID="lnkSalir" class="nav-link active" aria-current="page" OnClick="lnkSalir_Click">Salir</asp:LinkButton>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div>
+            <asp:ScriptManager ID="script1" runat="server"></asp:ScriptManager>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                <%-- Aqui se renderizan los formularios --%>
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+
+</html>

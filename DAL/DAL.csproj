@@ -43,6 +43,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,18 +54,36 @@
   <ItemGroup>
     <Compile Include="BDSeguridadInformatica.cs" />
     <Compile Include="Conexion.cs" />
+    <Compile Include="DAL_Formulario.cs" />
+    <Compile Include="DAL_Historial.cs" />
+    <Compile Include="DAL_Parametro.cs" />
     <Compile Include="DAL_Rol.cs" />
+    <Compile Include="DAL_RolFormulario.cs" />
+    <Compile Include="DAL_Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EL\EL.csproj">
       <Project>{7f2b4a39-bdc9-4b89-8234-3ed1a46c5e95}</Project>
       <Name>EL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{4118b4d0-40b4-4f28-987d-32cfb3765c9f}</Project>
+      <Name>Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="BDSeguridadInformatica.sql" />
