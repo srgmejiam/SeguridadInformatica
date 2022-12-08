@@ -84,6 +84,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="RespaldoBD\BDSeguridadInformatica.bak" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="BDSeguridadInformatica.sql" />
