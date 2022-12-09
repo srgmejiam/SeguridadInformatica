@@ -880,12 +880,7 @@ namespace SeguridadInformatica
                 RegistroHistorial.Descripcion = "La cuenta del usuario ID: " + User.IdUsuario + " ,con login actualmente: " + User.Login + " fue bloqueada por multiples intentos fallidos de iniciar sesión (" + Intentos.ToString()
                     + " Intentos). Fue desbloqueda por el usuario ID: " + IdUsuarioSession.ToString();
                 RegistroHistorial.UsuarioRegistro = IdUsuarioSession;
-                if (!(BL_Historial.InsertarHistorial(RegistroHistorial).IdHistorial > 0))
-                {
-                    Mensaje("Error al guardar el historial de desbloqueo de la cuenta del usuario", (int)eMessage.Error);
-                    return;
-                }
-
+             
                 Mensaje("Usuario desbloqueado con exito!!!", (int)eMessage.Exito);
                 cargarGridUsuarios();
                 limpiarControles();
